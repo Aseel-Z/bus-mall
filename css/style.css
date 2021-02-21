@@ -39,7 +39,7 @@ body footer {
 
 }
 #section2 ul {
-    margin-left: 2em;
+    margin-left: 17em;
     font-size: large;
 
 }
@@ -56,4 +56,19 @@ body footer {
     font-size: large;
     display: inline-block;
     position: relative;
+}
+
+
+
+#section2 ul li img {
+    position: relative;
+    float: right;
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 50%;
+    margin-left: 2em;
+    text-align: center;
+    display: block;
+    border: black;
+    border-style: solid;
 }

@@ -15,10 +15,12 @@
 // Attach an event listener to the section of the HTML page where the images are going to be displayed.
 // Once the users ‘clicks’ a product, generate three new products for the user to pick from.
 let products = [];
-function Product(name,image,display) {
+
+function Product(name,image) {
 this.productName = name;
 this.imagePath = image;
 this.displayCount = 0;
+this.clicksCount = 0;
 products.push(this);
 }
 
@@ -53,10 +55,34 @@ new Product('wine-glass','img/wine-glass.jpg',this.displayCount);
 //     c+=1;
 // }
 // console.log(c)
-
+let randomIndexArray=[]
+// let randomImagePath=[]
 for (let j = 1; j <= 3; j++) {
- let imageRandom = Math.ceil(Math.random());
- console.log(imageRandom)
- console.log(products[imageRandom].imagePath);
+ let randomProductsIndex = Math.floor(Math.random()*products.length);
+ randomIndexArray.push(randomProductsIndex);
+//  randomImagePath.push(products[randomProductsIndex].imagePath)
+ products[randomProductsIndex].displayCount++;
+ console.log(randomProductsIndex)
+//  console.log(randomImagePath)
+ console.log(products[randomProductsIndex].displayCount);
 }
 
+for (let r = 0; r < randomIndexArray.length; r++) {
+    let li1 = document.getElementById("left-image");
+    let image = document.createElement('img');
+    li1.appendChild(image);
+    image.src = products[randomIndexArray[r]].imagePath;
+    image.addEventListener("click", function(){
+    products[randomIndexArray[r]].clicksCount++;})
+
+}
+console.log(products[0].clicksCount)
+
+// console.log(products[randomProductsIndex].displayCount)
+
+// addEventListener
+
+// document.addEventListener("click", function(){
+//     document.getElementById("demo").innerHTML = "Hello World";
+//   });
+  
