@@ -62,13 +62,23 @@ body footer {
 
 #section2 ul li img {
     position: relative;
-    float: right;
+    float:right;
     width: 200px;
     height: 200px;
     aspect-ratio: 50%;
     margin-left: 2em;
     text-align: center;
-    display: block;
+    display: inline-block;
     border: black;
     border-style: solid;
+}
+
+#right-image {
+    float: right;
+    display: inline-block;
+}
+
+#middle-image{
+    float: right;
+    display: inline-block;  
 }
