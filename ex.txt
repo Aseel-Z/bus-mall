@@ -1,0 +1,78 @@
+function createRandomImages() {
+  let click3=0;
+  let randomIndex = getRandomIndexArray();
+
+  image1.src = products[randomIndex[0]].imagePath;
+  //   image1.title = products[randomIndex[0]].name;
+  products[randomIndex[0]].displayCount++;
+  image1.addEventListener('click', function () {
+    if(click3===0){
+      products[randomIndex[0]].clicksCount++;
+      click3++;
+    };
+  });
+
+  image2.src = products[randomIndex[1]].imagePath;
+  //   image2.title = products[randomIndex[1]].name;
+  products[randomIndex[1]].displayCount++;
+  image2.addEventListener('click', function () {
+    if(click3===0){
+      products[randomIndex[1]].clicksCount++;
+      click3++;
+    };
+
+
+  });
+
+  image3.src = products[randomIndex[2]].imagePath;
+  //   image3.title = products[randomIndex[2]].name;
+  products[randomIndex[2]].displayCount++;
+  image3.addEventListener('click', function () {
+    if(click3===0){
+      products[randomIndex[2]].clicksCount++;
+      click3++;
+    };
+  });
+  return click3;
+}
+
+createRandomImages();
+
+
+ for (let round = 0; round < 24; round++) {
+
+  createRandomImages();
+};
+
+for (let y = 0; y < products.length; y++) {
+  console.log(products[y].clicksCount);
+  console.log( products[y].displayCount);
+};
+
+// Render results part
+
+
+
+
+//   imagesContainer.addEventListener('click', function (event) {
+//     if (counter == 25){
+//       //  stop event 
+//     }
+//     let x = event.target.id == right
+//     products[randomIndex[2]].clicksCount++;
+//     counter++;
+//   });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

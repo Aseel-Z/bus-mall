@@ -16,7 +16,7 @@
 // Once the users ‘clicks’ a product, generate three new products for the user to pick from.
 
 // create array for all the 20 products, then push objects(products) constructed by an object constructor
-let counter = 0;
+let rounds = 0;
 let products = [];
 function Product(name, image) {
   this.productName = name;
@@ -84,16 +84,16 @@ console.log(getRandomIndexArray());
 let imagesContainer = document.getElementById('images');
 let image1 = document.createElement('img');
 imagesContainer.appendChild(image1);
-image1.id="left-image";
+image1.id='left-image';
 
 
 let image2 = document.createElement('img');
 imagesContainer.appendChild(image2);
-image2.id="middle-image";
+image2.id='middle-image';
 
 let image3 = document.createElement('img');
 imagesContainer.appendChild(image3);
-image3.id="right-image";
+image3.id='right-image';
 
 function createRandomImages() {
   let randomIndex = getRandomIndexArray();
@@ -102,40 +102,55 @@ function createRandomImages() {
   image1.title = products[randomIndex[0]].name;
   products[randomIndex[0]].displayCount++;
 
+
   image2.src = products[randomIndex[1]].imagePath;
-  image2.title = products[randomIndex[1]].name;
+    image2.title = products[randomIndex[1]].name;
   products[randomIndex[1]].displayCount++;
-   
+
+
   image3.src = products[randomIndex[2]].imagePath;
   image3.title = products[randomIndex[2]].name;
   products[randomIndex[2]].displayCount++;
-   
-
-//   imagesContainer.addEventListener('click', function (event) {
-//     if (counter == 25){
-//       //  stop event 
-//     }
-//     let x = event.target.id == right
-//     products[randomIndex[2]].clicksCount++;
-//     counter++;
-//   });
 }
 
-
-
-
-// for (let round = 0; round < 24; round++) {
-//    createRandomImages();
-// };
-
-// stop event listener
-// flag inside for (25 rounds)
+createRandomImages();
+rounds++;
+imagesContainer.addEventListener('click', function (event) {
+  for (let i = 0; i < products.length; i++) {
+    if(event.target.title=== products[i].name){
+      products[i].clicksCount++;
+      rounds++;
+      if (rounds<25) {
+        createRandomImages();
+      }
+    };
+  };
+});
 
 
 for (let y = 0; y < products.length; y++) {
   console.log(products[y].clicksCount);
-  console.log( products[y].displayCount)
+  console.log( products[y].displayCount);
+};
+
+// Render results part
+const resultSection = document.getElementById('section2');
+const list = document.createElement('ul');
+resultSection.appendChild(list);
+
+for (let i = 0; i < products.length; i++) {
+  let Eli = document.createElement('li');
+  list.appendChild(Eli);
+  Eli.textContent = products[i].name + ': '+products[i].clicksCount;
 }
+
+
+
+
+
+
+
+
 
 
 
