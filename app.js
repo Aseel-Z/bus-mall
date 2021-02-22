@@ -41,7 +41,7 @@ new Product('shark','img/shark.jpg',this.displayCount);
 new Product('sweep','img/sweep.jpg',this.displayCount);
 new Product('tauntaun','img/tauntaun.jpg',this.displayCount);
 new Product('unicorn','img/unicorn.jpg',this.displayCount);
-new Product('usb','img/usb.jpg',this.displayCount);
+new Product('usb','img/usb.gif',this.displayCount);
 new Product('water-can','img/water-can.jpg',this.displayCount);
 new Product('wine-glass','img/wine-glass.jpg',this.displayCount);
 
@@ -55,34 +55,45 @@ new Product('wine-glass','img/wine-glass.jpg',this.displayCount);
 //     c+=1;
 // }
 // console.log(c)
-let randomIndexArray=[]
-// let randomImagePath=[]
-for (let j = 1; j <= 3; j++) {
- let randomProductsIndex = Math.floor(Math.random()*products.length);
- randomIndexArray.push(randomProductsIndex);
-//  randomImagePath.push(products[randomProductsIndex].imagePath)
- products[randomProductsIndex].displayCount++;
- console.log(randomProductsIndex)
-//  console.log(randomImagePath)
- console.log(products[randomProductsIndex].displayCount);
-}
 
-for (let r = 0; r < randomIndexArray.length; r++) {
-    let li1 = document.getElementById("left-image");
-    let image = document.createElement('img');
-    li1.appendChild(image);
-    image.src = products[randomIndexArray[r]].imagePath;
-    image.addEventListener("click", function(){
-    products[randomIndexArray[r]].clicksCount++;})
+function getRandomIndexArray(){
+    let randomIndexArray=[];
+    let randomProductsIndex = Math.floor(Math.random()*products.length);
+    randomIndexArray.push(randomProductsIndex);
+    products[randomProductsIndex].displayCount++;
+    for (let j = 0; j < 2; j++) {
+    randomProductsIndex = Math.floor(Math.random()*products.length);
+     if (randomProductsIndex = randomIndexArray[j]) {
+        j--;
+     } else {
+        randomIndexArray.push(randomProductsIndex);
+        products[randomProductsIndex].displayCount++;
+     }
+    //  randomImagePath.push(products[randomProductsIndex].imagePath)
+     console.log(randomProductsIndex);
+    //  console.log(randomImagePath)
+     console.log(products[randomProductsIndex].displayCount);
+    };
+};
+getRandomIndexArray();
 
-}
-console.log(products[0].clicksCount)
+// for (let round = 0; round < 24; round++) {
+//  for (let r = 0; r < randomIndexArray.length; r++) {
+//         let li1 = document.getElementById("left-image");
+//         let image = document.createElement('img');
+//         li1.appendChild(image);
+//         image.src = products[randomIndexArray[r]].imagePath;
+//         image.addEventListener("click", function(){
+//         products[randomIndexArray[r]].clicksCount++;
+//         location.reload;
+//         getRandomIndexArray();
+//     })
+    
+//     }
+// }
 
-// console.log(products[randomProductsIndex].displayCount)
 
-// addEventListener
-
-// document.addEventListener("click", function(){
-//     document.getElementById("demo").innerHTML = "Hello World";
-//   });
+// for (let y = 0; y < products.length; y++) { 
+//     console.log(products[y].clicksCount);
+// }
   
