@@ -133,15 +133,15 @@ for (let y = 0; y < products.length; y++) {
   console.log( products[y].displayCount);
 };
 
-// Render results part
-const resultSection = document.getElementById('section2');
-const list = document.createElement('ul');
-resultSection.appendChild(list);
+// Render results part Chart
+const resultSection = document.getElementById('myCanvas').getContext('2d')
+// const list = document.createElement('ul');
+// resultSection.appendChild(list);
 
 for (let i = 0; i < products.length; i++) {
-  let Eli = document.createElement('li');
-  list.appendChild(Eli);
-  Eli.textContent = products[i].name + ': '+products[i].clicksCount;
+  // let Eli = document.createElement('li');
+  // list.appendChild(Eli);
+  // Eli.textContent = products[i].name + ': '+products[i].clicksCount;
 }
 
 
