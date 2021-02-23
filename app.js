@@ -135,8 +135,36 @@ for (let y = 0; y < products.length; y++) {
 
 // Render results part Chart
 const resultSection = document.getElementById('myCanvas').getContext('2d')
-// const list = document.createElement('ul');
-// resultSection.appendChild(list);
+let barChart = document.createElement('chart');
+resultSection.appendChild(barChart);
+
+function getnamesLabels() {
+  let namesLabels =[];
+  for (let i = 0; i < products.length; i++) {
+    namesLabels.push(products[i].name);
+  };
+ return namesLabels;
+}
+
+function getVotes() {
+  let votes =[];
+  for (let i = 0; i < products.length; i++) {
+    votes.push(products[i].clicksCount);
+  };
+ return votes;
+}
+
+
+var barChart = {
+  type: 'bar',
+  data: {
+    labels : getnamesLabels(),
+    datasets: {
+       label: 'Votes'
+       data: getVotes(),
+    }
+  }
+	
 
 for (let i = 0; i < products.length; i++) {
   // let Eli = document.createElement('li');
