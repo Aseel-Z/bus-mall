@@ -1,5 +1,3 @@
-'use strict';
-
 // variable1 : number of clicks for each picture
 // variable2 : number of time the picture was displayed
 // variable3 : calculated - result - must show after 25 selections,only
@@ -15,6 +13,7 @@
 // Attach an event listener to the section of the HTML page where the images are going to be displayed.
 // Once the users ‘clicks’ a product, generate three new products for the user to pick from.
 
+'use strict';
 // create array for all the 20 products, then push objects(products) constructed by an object constructor
 let rounds = 0;
 let products = [];
@@ -47,21 +46,14 @@ new Product('usb', 'img/usb.gif');
 new Product('water-can', 'img/water-can.jpg');
 new Product('wine-glass', 'img/wine-glass.jpg');
 
-// this.displayCount gets updated;increments by 1,
-//  each time the associated images is displayed randomly, if img url contains name then +1
-// let c = 0;
-// for (let i = 0; i < products.length; i++) {
-//     console.log(products[i]);
-//     c+=1;
-// }
-// console.log(c)
 
-// declare a function that gets 3 random unique indexes, stored in an array
+// declare a function that returns 3 random unique indexes, stored in an array
 
 function getRandomIndexArray() {
   let randomIndexArray = [];
   let randomProductsIndex = Math.floor(Math.random() * products.length);
   randomIndexArray.push(randomProductsIndex);
+  // push if unique
   for (let j = 0; j < 2; j++) {
     randomProductsIndex = Math.floor(Math.random() * products.length);
     for (let i = 0; i < randomIndexArray.length; i++) {
@@ -80,12 +72,12 @@ function getRandomIndexArray() {
 
 console.log(getRandomIndexArray());
 
-// Render Part 
+// Image Render Part
+
 let imagesContainer = document.getElementById('images');
 let image1 = document.createElement('img');
 imagesContainer.appendChild(image1);
 image1.id='left-image';
-
 
 let image2 = document.createElement('img');
 imagesContainer.appendChild(image2);
@@ -104,7 +96,7 @@ function createRandomImages() {
 
 
   image2.src = products[randomIndex[1]].imagePath;
-    image2.title = products[randomIndex[1]].name;
+  image2.title = products[randomIndex[1]].name;
   products[randomIndex[1]].displayCount++;
 
 
@@ -115,6 +107,8 @@ function createRandomImages() {
 
 createRandomImages();
 rounds++;
+
+
 imagesContainer.addEventListener('click', function (event) {
   for (let i = 0; i < products.length; i++) {
     if(event.target.title=== products[i].name){
@@ -145,6 +139,14 @@ for (let i = 0; i < products.length; i++) {
 }
 
 
+// Questions:
+// how to resize and position chart?
+// the display property and position and float, should be for the parent or child?
+// how to position images?
+// what is event exactly?
+// what is target?
+// shall i add eventListener to the images parent / container?
+// how to prevent user from clicking more than once?
 
 
 
