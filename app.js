@@ -16,7 +16,7 @@
 // Once the users ‘clicks’ a product, generate three new products for the user to pick from.
 
 // create array for all the 20 products, then push objects(products) constructed by an object constructor
-let rounds = 0;
+// let rounds = 0;
 let products = [];
 function Product(name, image) {
   this.productName = name;
@@ -58,119 +58,136 @@ new Product('wine-glass', 'img/wine-glass.jpg');
 
 // declare a function that gets 3 random unique indexes, stored in an array
 
-function getRandomIndexArray() {
-  let randomIndexArray = [];
-  let randomProductsIndex = Math.floor(Math.random() * products.length);
-  randomIndexArray.push(randomProductsIndex);
-  for (let j = 0; j < 2; j++) {
-    randomProductsIndex = Math.floor(Math.random() * products.length);
-    for (let i = 0; i < randomIndexArray.length; i++) {
-      if (randomProductsIndex !== randomIndexArray[i]) {
-        randomIndexArray.push(randomProductsIndex);
-      } 
-      else {
-        j=j-1;
-      }
-      //   console.log(randomIndexArray);
-    //  console.log(products[randomProductsIndex].displayCount);
-    }
-  }
-  return randomIndexArray;
-}
+// function getRandomIndexArray() {
+//   let randomIndexArray = [];
+//   let randomProductsIndex = Math.floor(Math.random() * products.length);
+//   randomIndexArray.push(randomProductsIndex);
+//   for (let j = 0; j < 2; j++) {
+//     randomProductsIndex = Math.floor(Math.random() * products.length);
+//     for (let i = 0; i < randomIndexArray.length; i++) {
+//       if (randomProductsIndex !== randomIndexArray[i]) {
+//         randomIndexArray.push(randomProductsIndex);
+//       } 
+//       else {
+//         j=j-1;
+//       }
+//       //   console.log(randomIndexArray);
+//     //  console.log(products[randomProductsIndex].displayCount);
+//     }
+//   }
+//   return randomIndexArray;
+// }
 
-console.log(getRandomIndexArray());
+// console.log(getRandomIndexArray());
 
-// Render Part 
-let imagesContainer = document.getElementById('images');
-let image1 = document.createElement('img');
-imagesContainer.appendChild(image1);
-image1.id='left-image';
-
-
-let image2 = document.createElement('img');
-imagesContainer.appendChild(image2);
-image2.id='middle-image';
-
-let image3 = document.createElement('img');
-imagesContainer.appendChild(image3);
-image3.id='right-image';
-
-function createRandomImages() {
-  let randomIndex = getRandomIndexArray();
-
-  image1.src = products[randomIndex[0]].imagePath;
-  image1.title = products[randomIndex[0]].name;
-  products[randomIndex[0]].displayCount++;
+// // Render Part 
+// let imagesContainer = document.getElementById('images');
+// let image1 = document.createElement('img');
+// imagesContainer.appendChild(image1);
+// image1.id='left-image';
 
 
-  image2.src = products[randomIndex[1]].imagePath;
-    image2.title = products[randomIndex[1]].name;
-  products[randomIndex[1]].displayCount++;
+// let image2 = document.createElement('img');
+// imagesContainer.appendChild(image2);
+// image2.id='middle-image';
+
+// let image3 = document.createElement('img');
+// imagesContainer.appendChild(image3);
+// image3.id='right-image';
+
+// function createRandomImages() {
+//   let randomIndex = getRandomIndexArray();
+
+//   image1.src = products[randomIndex[0]].imagePath;
+//   image1.title = products[randomIndex[0]].name;
+//   products[randomIndex[0]].displayCount++;
 
 
-  image3.src = products[randomIndex[2]].imagePath;
-  image3.title = products[randomIndex[2]].name;
-  products[randomIndex[2]].displayCount++;
-}
-
-createRandomImages();
-rounds++;
-imagesContainer.addEventListener('click', function (event) {
-  for (let i = 0; i < products.length; i++) {
-    if(event.target.title=== products[i].name){
-      products[i].clicksCount++;
-      rounds++;
-      if (rounds<25) {
-        createRandomImages();
-      }
-    };
-  };
-});
+//   image2.src = products[randomIndex[1]].imagePath;
+//     image2.title = products[randomIndex[1]].name;
+//   products[randomIndex[1]].displayCount++;
 
 
-for (let y = 0; y < products.length; y++) {
-  console.log(products[y].clicksCount);
-  console.log( products[y].displayCount);
-};
+//   image3.src = products[randomIndex[2]].imagePath;
+//   image3.title = products[randomIndex[2]].name;
+//   products[randomIndex[2]].displayCount++;
+// }
+
+// createRandomImages();
+// rounds++;
+// imagesContainer.addEventListener('click', function (event){
+//   for (let i = 0; i < products.length; i++) {
+//     if(event.target.title=== products[i].name){
+//       products[i].clicksCount++;
+//       rounds++;
+//       if (rounds<25) {
+//         createRandomImages();
+      
+//     }
+//   }}});
+
+
+// for (let y = 0; y < products.length; y++) {
+//   console.log(products[y].clicksCount);
+//   console.log( products[y].displayCount);
+// }
+
+
 
 // Render results part Chart
-const resultSection = document.getElementById('myCanvas').getContext('2d')
-let barChart = document.createElement('chart');
-resultSection.appendChild(barChart);
-
-function getnamesLabels() {
-  let namesLabels =[];
-  for (let i = 0; i < products.length; i++) {
-    namesLabels.push(products[i].name);
-  };
- return namesLabels;
-}
-
-function getVotes() {
-  let votes =[];
-  for (let i = 0; i < products.length; i++) {
-    votes.push(products[i].clicksCount);
-  };
- return votes;
-}
 
 
-var barChart = {
-  type: 'bar',
-  data: {
-    labels : getnamesLabels(),
-    datasets: {
-       label: 'Votes'
-       data: getVotes(),
-    }
-  }
-	
-
+let namesLabels =[];
 for (let i = 0; i < products.length; i++) {
-  // let Eli = document.createElement('li');
-  // list.appendChild(Eli);
-  // Eli.textContent = products[i].name + ': '+products[i].clicksCount;
+  namesLabels.push(products[i].productName);
 }
+
+
+let votes =[];
+for (let i = 0; i < products.length; i++) {
+  votes.push(products[i].clicksCount);
+}
+
+let views =[];
+for (let i = 0; i < products.length; i++) {
+  views.push(products[i].displayCount);
+}
+
+function createChart() {
+
+  const chartSection = document.getElementById('myCanvas').getContext('2d');
+  let myChart = new Chart(chartSection, {
+    // The type of chart we want to create
+    type: 'bar',
+    // The data for our dataset
+    data: {
+      labels: namesLabels,
+      datasets: [
+        {
+          barPercentage: 0.5,
+          // barThickness: 6,
+          borderWidth: 5,
+          label: '# of votes:',
+          backgroundColor: 'rgb(50, 70, 80)',
+          borderColor: 'rgb(70, 70, 70)',
+          data: votes,
+        },
+        {
+          barPercentage: 0.5,
+          // barThickness: 6,
+          borderWidth: 5,
+          label: '# of views:',
+          backgroundColor: 'rgb(100, 125, 50)',
+          borderColor: 'rgb(100, 125, 50)',
+          data: views,
+        },
+      ],
+    },
+  });
+}
+createChart();
+
+
 
 
 

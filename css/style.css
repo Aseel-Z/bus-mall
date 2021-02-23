@@ -45,7 +45,6 @@ body footer {
 }
 #section2 {
     margin-left: 1.5em;
-    display: inline-block;
     position: relative;
 }
 
@@ -82,3 +81,11 @@ body footer {
     float: right;
     display: inline-block;  
 }
+
+#myCanvas {
+    display: inline-block;
+    width: 5000px;
+    position: relative;
+}
+
+
