@@ -90,6 +90,7 @@ function clickDo (event){
     if (rounds === 25) {
       imagesContainer.removeEventListener('click', clickDo);
       createChart();
+      dataLocal;
     }
     else if (rounds<25) {
       createRandomImages();
@@ -151,16 +152,8 @@ function createChart() {
   });
 }
 
+// lab13
 
-
-
-
-
-
-
-
-
-
-
-
-
+function dataLocal {
+  products = JSON.parse(localStorage.getItem())
+}
