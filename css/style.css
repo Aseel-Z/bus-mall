@@ -1,4 +1,4 @@
- {
+*{
     font-family: 'Roboto Mono', monospace;
 }
 
@@ -57,19 +57,20 @@ li {
 }
 
 #section3 {
-    margin-left: 18em;
-    margin-top: -20em;
+    margin-left: 28em;
+    margin-top: -49em;
     font-size: large;
     display: inline-block;
     position: relative;
 }
 
-
-
+#section3 p {
+    margin-left: 1em;
+}
 
  #images {
-    margin-left: 20em;
-    text-align: center;
+    margin-left: 5em;
+    margin-right: 9em;
   }
   
  #images img {
@@ -77,10 +78,8 @@ li {
      position: relative;
      border: black;
      border-style: solid;
-     width: 10em;
-     height: 10em;
+     width: 15em;
+     height: 15em;
      margin-left: 2em;
      text-align: center;
  }
-
- 
